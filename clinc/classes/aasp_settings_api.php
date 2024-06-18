@@ -64,81 +64,78 @@ if (!class_exists('AASP_SettingAPI')):
                 'aasp_search_form' => array(
                 array(
                 'name' => 'text',
-                'label' => __('Text Input', 'wedevs'),
-                'desc' => __('Text input description', 'wedevs'),
+                'label' => __('Search Bar', 'aasp-in'),
+                'desc' => __('Search Placeholder', 'aasp-in'),
                 'type' => 'text',
-                'default' => 'Title'
+                'default' => 'Search Product'
                 ),
                 array(
                 'name' => 'textarea',
-                'label' => __('Textarea Input', 'wedevs'),
-                'desc' => __('Textarea description', 'wedevs'),
-                'type' => 'textarea'
+                'label' => __('Search Button', 'aasp-in'),
+                'desc' => __('Button Placeholder', 'aasp-in'),
+                'type' => 'text'
                 ),
                 array(
                 'name' => 'checkbox',
-                'label' => __('Checkbox', 'wedevs'),
-                'desc' => __('Checkbox Label', 'wedevs'),
+                'label' => __('Search Form Styles', 'aasp-in'),
+                'desc' => __('Checkbox Label', 'aasp-in'),
                 'type' => 'checkbox'
                 ),
                 array(
                 'name' => 'radio',
-                'label' => __('Radio Button', 'wedevs'),
-                'desc' => __('A radio button', 'wedevs'),
-                'type' => 'radio',
-                'options' => array(
-                'yes' => 'Yes',
-                'no' => 'No'
-                )
+                'label' => __('Search Bar Width', 'aasp-in'),
+                'desc' => __('A radio button', 'aasp-in'),
+                'type' => 'text'
                 ),
                 array(
                 'name' => 'multicheck',
-                'label' => __('Multile checkbox', 'wedevs'),
-                'desc' => __('Multi checkbox description', 'wedevs'),
-                'type' => 'multicheck',
-                'options' => array(
-                'one' => 'One',
-                'two' => 'Two',
-                'three' => 'Three',
-                'four' => 'Four'
-                )
+                'label' => __('Search Bar Height', 'aasp-in'),
+                'desc' => __('Multi checkbox description', 'aasp-in'),
+                'type' => 'text'
                 ),
                 array(
                 'name' => 'selectbox',
-                'label' => __('A Dropdown', 'wedevs'),
-                'desc' => __('Dropdown description', 'wedevs'),
-                'type' => 'select',
-                'default' => 'no',
-                'options' => array(
-                'yes' => 'Yes',
-                'no' => 'No'
-                )
-                )
+                'label' => __('Button Width', 'aasp-in'),
+                'desc' => __('Dropdown description', 'aasp-in'),
+                'type' => 'text'
+                ),
+                array(
+                    'name' => 'selectbox',
+                    'label' => __('Button Height', 'aasp-in'),
+                    'desc' => __('Dropdown description', 'aasp-in'),
+                    'type' => 'text'
+                ),
+                array(
+                    'name' => 'selectbox2',
+                    'label' => __('Button Width', 'aasp-in'),
+                    'desc' => __('Dropdown description', 'aasp-in'),
+                    'type' => 'text'
+                    )
                 ),
                 'aasp_search_result' => array(
                 array(
                 'name' => 'text',
-                'label' => __('Text Input', 'wedevs'),
-                'desc' => __('Text input description', 'wedevs'),
+                'label' => __('Button Height', 'aasp-in'),
+                'desc' => __('Text input description', 'aasp-in'),
                 'type' => 'text',
                 'default' => 'Title'
                 ),
                 array(
                 'name' => 'textarea',
-                'label' => __('Textarea Input', 'wedevs'),
-                'desc' => __('Textarea description', 'wedevs'),
+                'label' => __('Textarea Input', 'aasp-in'),
+                'desc' => __('Textarea description', 'aasp-in'),
                 'type' => 'textarea'
                 ),
                 array(
                 'name' => 'checkbox',
-                'label' => __('Checkbox', 'wedevs'),
-                'desc' => __('Checkbox Label', 'wedevs'),
+                'label' => __('Checkbox', 'aasp-in'),
+                'desc' => __('Checkbox Label', 'aasp-in'),
                 'type' => 'checkbox'
                 ),
                 array(
                 'name' => 'radio',
-                'label' => __('Radio Button', 'wedevs'),
-                'desc' => __('A radio button', 'wedevs'),
+                'label' => __('Radio Button', 'aasp-in'),
+                'desc' => __('A radio button', 'aasp-in'),
                 'type' => 'radio',
                 'default' => 'no',
                 'options' => array(
@@ -148,8 +145,8 @@ if (!class_exists('AASP_SettingAPI')):
                 ),
                 array(
                 'name' => 'multicheck',
-                'label' => __('Multile checkbox', 'wedevs'),
-                'desc' => __('Multi checkbox description', 'wedevs'),
+                'label' => __('Multile checkbox', 'aasp-in'),
+                'desc' => __('Multi checkbox description', 'aasp-in'),
                 'type' => 'multicheck',
                 'default' => array('one' => 'one', 'four' => 'four'),
                 'options' => array(
@@ -161,8 +158,8 @@ if (!class_exists('AASP_SettingAPI')):
                 ),
                 array(
                 'name' => 'selectbox',
-                'label' => __('A Dropdown', 'wedevs'),
-                'desc' => __('Dropdown description', 'wedevs'),
+                'label' => __('A Dropdown', 'aasp-in'),
+                'desc' => __('Dropdown description', 'aasp-in'),
                 'type' => 'select',
                 'options' => array(
                 'yes' => 'Yes',
@@ -173,27 +170,27 @@ if (!class_exists('AASP_SettingAPI')):
                 'aasp_color' => array(
                 array(
                 'name' => 'text',
-                'label' => __('Text Input', 'wedevs'),
-                'desc' => __('Text input description', 'wedevs'),
+                'label' => __('Text Input', 'aasp-in'),
+                'desc' => __('Text input description', 'aasp-in'),
                 'type' => 'text',
                 'default' => 'Title'
                 ),
                 array(
                 'name' => 'textarea',
-                'label' => __('Textarea Input', 'wedevs'),
-                'desc' => __('Textarea description', 'wedevs'),
+                'label' => __('Textarea Input', 'aasp-in'),
+                'desc' => __('Textarea description', 'aasp-in'),
                 'type' => 'textarea'
                 ),
                 array(
                 'name' => 'checkbox',
-                'label' => __('Checkbox', 'wedevs'),
-                'desc' => __('Checkbox Label', 'wedevs'),
+                'label' => __('Checkbox', 'aasp-in'),
+                'desc' => __('Checkbox Label', 'aasp-in'),
                 'type' => 'checkbox'
                 ),
                 array(
                 'name' => 'radio',
-                'label' => __('Radio Button', 'wedevs'),
-                'desc' => __('A radio button', 'wedevs'),
+                'label' => __('Radio Button', 'aasp-in'),
+                'desc' => __('A radio button', 'aasp-in'),
                 'type' => 'radio',
                 'options' => array(
                 'yes' => 'Yes',
@@ -202,8 +199,8 @@ if (!class_exists('AASP_SettingAPI')):
                 ),
                 array(
                 'name' => 'multicheck',
-                'label' => __('Multile checkbox', 'wedevs'),
-                'desc' => __('Multi checkbox description', 'wedevs'),
+                'label' => __('Multile checkbox', 'aasp-in'),
+                'desc' => __('Multi checkbox description', 'aasp-in'),
                 'type' => 'multicheck',
                 'options' => array(
                 'one' => 'One',
@@ -214,8 +211,8 @@ if (!class_exists('AASP_SettingAPI')):
                 ),
                 array(
                 'name' => 'selectbox',
-                'label' => __('A Dropdown', 'wedevs'),
-                'desc' => __('Dropdown description', 'wedevs'),
+                'label' => __('A Dropdown', 'aasp-in'),
+                'desc' => __('Dropdown description', 'aasp-in'),
                 'type' => 'select',
                 'options' => array(
                 'yes' => 'Yes',

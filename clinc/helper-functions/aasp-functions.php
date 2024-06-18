@@ -1,6 +1,6 @@
 <?php
 /**
- * AASP Common function - 
+ * AASP Common functions - 
  *
  * @Author        Tuba Saif
  */

@@ -15,6 +15,22 @@ if (!class_exists('AASP_Woo_Product_Search_Class')) {
 
     class AASP_Woo_Product_Search_Class {
         
+         /**
+	 * The option_search_results
+	 *
+	 */
+	public $option_search_from;
+    /**
+    * The option_search_results
+    *
+    */
+   public $option_search_results;
+   
+    /**
+    * The option_search_results
+    *
+    */
+   public $option_color;
         /**
          * The single instance of the class
          *
@@ -27,6 +43,10 @@ if (!class_exists('AASP_Woo_Product_Search_Class')) {
          */
         public function __construct() {
             $this->aasp_load_classes();
+            $this->apsw_load_functions();
+            $this->option_search_from 		= wp_parse_args ( aasp_get_option('apsw_search_form') );
+            $this->option_search_results 	= wp_parse_args ( aasp_get_option('apsw_search_results') );
+            $this->option_color 			= wp_parse_args ( aasp_get_option('apsw_color_scheme') );
         }
 
         /**
@@ -40,10 +60,22 @@ if (!class_exists('AASP_Woo_Product_Search_Class')) {
             }
             return self::$_instance;
         }
+        	/**
+	 *
+	 * @return plugins related function 
+	 */
+    public function apsw_load_functions() {
+        
+        $this->aasp_load_module( '<clinc>
+        <helper-functions>aasp-functions' );
+         
+      }
 
         public function aasp_load_classes() {
             $this->aasp_load_module('libraries/class.settings-api');
             $this->aasp_load_module('clinc/classes/aasp_settings_api');
+            $this->apsw_load_module( 'libraries/class.settings-api' );
+            $this->apsw_load_module( 'clinc/classes/aasp_search' );
         }
 
         protected function aasp_load_module($mod) {
