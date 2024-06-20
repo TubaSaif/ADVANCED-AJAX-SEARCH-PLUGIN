@@ -23,13 +23,13 @@ class AASP_Woo_Product_Search_Class {
     * The option_search_results
     *
     */
-   public $option_search_results;
+    public $option_search_results;
    
     /**
     * The option_search_results
     *
     */
-   public $option_color;
+    public $option_color;
         /**
          * The single instance of the class
          *
@@ -41,11 +41,13 @@ class AASP_Woo_Product_Search_Class {
          * Class constructor.
          */
     public function __construct() {
+            $this->aasp_load_defines();
+            $this->aasp_load_scripts();
             $this->aasp_load_classes();
             $this->aasp_load_functions();
-            $this->option_search_from 		= wp_parse_args ( aasp_get_option('aasp_search_form') );
-            $this->option_search_results 	= wp_parse_args ( aasp_get_option('aasp_search_results') );
-            $this->option_color 			= wp_parse_args ( aasp_get_option('aasp_color_scheme') );
+            $this->option_search_from 		= wp_parse_args(aasp_get_option('aasp_search_form') );
+            $this->option_search_results 	= wp_parse_args(aasp_get_option('aasp_search_results') );
+            $this->option_color 			= wp_parse_args(aasp_get_option('aasp_color') );
         }
 
         /**
@@ -63,16 +65,15 @@ class AASP_Woo_Product_Search_Class {
 	 *
 	 * @return plugins related function 
 	 */
-    public function aasp_load_functions() {   
-        $this->aasp_load_module( '<clinc>
-        <helper-functions>aasp-functions' );
+    public function aasp_load_functions() {
+        $this->aasp_load_module( 'clinc/helper-functions/aasp-functions' );
          
       }
 
     public function aasp_load_classes() {
+           $this->aasp_load_module('libraries/class.settings-api');
             $this->aasp_load_module('clinc/classes/aasp_settings_api');
-            $this->aasp_load_module( 'libraries/class.settings-api' );
-            $this->aasp_load_module( 'clinc/classes/aasp_search' );
+            $this->aasp_load_module('clinc/classes/aasp_search');
         }
 
     protected function aasp_load_module($mod) {

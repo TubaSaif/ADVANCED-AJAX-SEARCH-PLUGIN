@@ -47,7 +47,7 @@ if (!class_exists('AASP_SettingAPI')):
                     'title' => esc_html__('Search Form', 'aasp-in')
                 ),
                 array(
-                    'id'    => 'aasp_search_result',
+                    'id'    => 'aasp_search_results',
                     'title' => esc_html__('Search Results', 'aasp-in')
                 ),
                 array(
@@ -112,7 +112,7 @@ if (!class_exists('AASP_SettingAPI')):
                     'type' => 'text'
                     )
                 ),
-                'aasp_search_result' => array(
+                'aasp_search_results' => array(
                 array(
                 'name' => 'text',
                 'label' => __('Button Height', 'aasp-in'),

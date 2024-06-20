@@ -208,7 +208,7 @@ if ( ! function_exists( 'aasp_get_option' ) ) :
 	 * @param string $key Option key.
 	 * @return mixed Option value.
 	 */
-	function aasp_get_option( $key ) {
+	function aasp_get_option($key) {
 
 		if ( empty( $key ) ) {
 			return;
@@ -289,7 +289,7 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 				
 		);
 		
-		$defaults['aasp_color_scheme']  =  array(
+		$defaults['aasp_color']  =  array(
 		
 				'search_bar_bg' 		=> '#fff',
 				'search_bar_border' 	=> '#e2e1e6',
