@@ -107,15 +107,15 @@ class aasp_Search_Template {
 						'title' 	=> esc_html( $product->get_title() ),
 						'url'   	=> $product->get_permalink(),
 						
-						'img_url' 	=> ( apply_filters( 'apws_show_image', $this->option_search_results['show_image'] ) == 'yes' )? esc_url_raw( get_the_post_thumbnail_url( $product->id,'thumbnail') )  : '' ,
+						'img_url' 	=> ( apply_filters( 'aasp_show_image', $this->option_search_results['show_image'] ) == 'yes' )? esc_url_raw( get_the_post_thumbnail_url( $product->id,'thumbnail') )  : '' ,
 					
-						'price'		=> ( apply_filters( 'apws_show_price', $this->option_search_results['show_price'] ) == 'yes' )? $product->get_price_html() : '' ,
+						'price'		=> ( apply_filters( 'aasp_show_price', $this->option_search_results['show_price'] ) == 'yes' )? $product->get_price_html() : '' ,
 						
-						'rating'	=> ( apply_filters( 'apws_show_rating', $this->option_search_results['show_rating'] ) == 'yes' )? wc_get_rating_html( $average, $rating_count ) : '' ,
+						'rating'	=> ( apply_filters( 'aasp_show_rating', $this->option_search_results['show_rating'] ) == 'yes' )? wc_get_rating_html( $average, $rating_count ) : '' ,
 						
-						'category' 	=> ( apply_filters( 'apws_show_category', $this->option_search_results['show_category'] ) == 'yes' )? esc_html( wc_get_product_category_list( $product->get_id(), ', ') ) : '' ,
+						'category' 	=> ( apply_filters( 'aasp_show_category', $this->option_search_results['show_category'] ) == 'yes' )? esc_html( wc_get_product_category_list( $product->get_id(), ', ') ) : '' ,
 						
-						'stock'		=> ( apply_filters( 'apws_show_stock', $this->option_search_results['stock_status'] ) == 'yes' )? $product->get_stock_status() : '' ,
+						'stock'		=> ( apply_filters( 'aasp_show_stock', $this->option_search_results['stock_status'] ) == 'yes' )? $product->get_stock_status() : '' ,
 						
 						'content'	=> $this->aasp_ajax_data_content( $product->id ),
 						
@@ -161,7 +161,7 @@ class aasp_Search_Template {
      */
 	public function aasp_ajax_data_content( $id ){
 		$content = '';
-		if( apply_filters( 'apws_show_description', $this->option_search_results['show_description'] )  == 'yes' ){
+		if( apply_filters( 'aasp_show_description', $this->option_search_results['show_description'] )  == 'yes' ){
 			
 			if( $this->option_search_results['content_source'] == 'content' ){
 				$content = mb_strimwidth( esc_html( strip_tags(get_the_content( absint( $id )) ) ) ,0, absint( $this->option_search_results['length'] )  );
@@ -242,7 +242,7 @@ class aasp_Search_Template {
      */
 	public function aasp_search_style_5(){
 		echo wp_kses( $this->aasp_search_element( esc_attr( $this->option_search_from['search_btn']  ) ) , aspw_alowed_tags() );
-		echo wp_kses( $this->apws_search_element_category(), aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 	}
 	/**
      * search style4 
@@ -250,7 +250,7 @@ class aasp_Search_Template {
      */
 	public function aasp_search_style_4(){
 		echo wp_kses( $this->aasp_search_element( esc_attr( $this->option_search_from['search_btn']  ) ) , aspw_alowed_tags() );
-		echo wp_kses( $this->apws_search_element_category(), aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 		
 	}
 	/**
@@ -268,7 +268,7 @@ class aasp_Search_Template {
 	public function aasp_search_style_1(){
 		
 		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aspw_alowed_tags() );
-		echo wp_kses( $this->apws_search_element_category(), aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 		
 		
 	}
@@ -340,13 +340,13 @@ class aasp_Search_Template {
           
          $html .= '<input type="hidden" name="post_type" value="product" />';
 		 
-		 if( apply_filters( 'apws_show_loader', $this->option_search_from['show_loader'] ) == 'yes' ){
+		 if( apply_filters( 'aasp_show_loader', $this->option_search_from['show_loader'] ) == 'yes' ){
 			 
 		 	$html .='<img class="aasp_loader" src="'.esc_url_raw( aasp_PLUGIN_URL ).'assets/images/loader.gif"/>';
 			
 		 }
 		 
-		return apply_filters( 'apws_aasp_search_element', $html);
+		return apply_filters( 'aasp_aasp_search_element', $html);
 	}
 	 /**
      * Render woocommerce category select box view
@@ -355,7 +355,7 @@ class aasp_Search_Template {
 	 *
 	 * @return woocommerce category selectbox html
      */
-	public function apws_search_element_category() {
+	public function aasp_search_element_category() {
 		
 		$cat_args = array(
 				'taxonomy' => 'product_cat',
@@ -369,7 +369,7 @@ class aasp_Search_Template {
             );
 			
 			
-		$all_categories = apply_filters( 'apws_get_categories_list',get_categories( $cat_args ));
+		$all_categories = apply_filters( 'aasp_get_categories_list',get_categories( $cat_args ));
 		
 		$current_cat = ( isset( $_GET['category'] ) && $_GET['category'] != "" ) ? sanitize_text_field( $_GET['category'] ) : '';
 			
@@ -396,7 +396,7 @@ class aasp_Search_Template {
 		
 			$html .= '</select></div>';
 		
-        return apply_filters( 'apws_woo_categories_select_box', $html); 
+        return apply_filters( 'aasp_woo_categories_select_box', $html); 
 	}
 	
 }

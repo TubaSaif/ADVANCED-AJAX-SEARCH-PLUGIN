@@ -43,8 +43,8 @@ class AASP_Woo_Product_Search_Class {
     public function __construct() {
             $this->aasp_load_defines();
             $this->aasp_load_scripts();
-            $this->aasp_load_classes();
             $this->aasp_load_functions();
+            $this->aasp_load_classes();
             $this->option_search_from 		= wp_parse_args(aasp_get_option('aasp_search_form') );
             $this->option_search_results 	= wp_parse_args(aasp_get_option('aasp_search_results') );
             $this->option_color 			= wp_parse_args(aasp_get_option('aasp_color') );
