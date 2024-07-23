@@ -5,14 +5,14 @@ class hstngr_widget extends WP_Widget {
     function __construct() {
         parent::__construct(
             // Base ID of your widget
-            'aspw-widgets-wrap', 
+            'aasp-widgets-wrap', 
 
             // Widget name will appear in UI
-            esc_html__('+ Advanced Product Search', 'apsw-lang'),
+            esc_html__('Advanced Product Search', 'apsw-lang'),
 
             // Widget description
             array(
-                'classname' => 'aspw-widgets-wrap-class',
+                'classname' => 'aasp-widgets-wrap-class',
                 'description' => esc_html__('Advanced Product Search – powerful live search plugin for WooCommerce', 'apsw-lang'),
                 'customize_selective_refresh' => true,
             )
@@ -24,23 +24,23 @@ class hstngr_widget extends WP_Widget {
         // Set widget title
         $widget_title = isset( $instance['title'] ) ? $instance['title'] : '';
 		$style		  = isset( $instance['search_bar_style'] ) ? $instance['search_bar_style'] : '';
-        echo wp_kses( $args['before_widget'] ,aspw_alowed_tags() );
+        echo wp_kses( $args['before_widget'] ,aasp_alowed_tags() );
         // if title is present
         if ( ! empty( $widget_title ) ) {
-			echo wp_kses( $args['before_title'] ,aspw_alowed_tags() );
+			echo wp_kses( $args['before_title'] ,aasp_alowed_tags() );
 			echo  esc_html( $widget_title );
-			echo wp_kses( $args['after_title'] ,aspw_alowed_tags() );
+			echo wp_kses( $args['after_title'] ,aasp_alowed_tags() );
           
         }
         // output
-        do_action('apsw_search_bar_preview', absint( $style ) );
-        echo wp_kses( $args['after_widget'] ,aspw_alowed_tags() );      
+        do_action('aasp_search_bar_preview', absint( $style ) );
+        echo wp_kses( $args['after_widget'] ,aasp_alowed_tags() );      
     }
 
     // The form() function - Outputs the options form in the admin
     public function form( $instance ) {
         // Title
-        $title = !empty($instance['title']) ? $instance['title'] : esc_html__( 'Default Title', 'hstngr_widget_domain' );
+        $title = !empty($instance['title']) ? $instance['title'] : esc_html__( 'Product Search', 'hstngr_widget_domain' );
     
         // Search Bar Style
         $search_bar_style = !empty($instance['search_bar_style']) ? $instance['search_bar_style'] : '1';
@@ -77,6 +77,7 @@ class hstngr_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['search_bar_style'] = ( ! empty( $new_instance['search_bar_style'] ) ) ? strip_tags( $new_instance['search_bar_style'] ) : '1';
         return $instance;
     }
 }
