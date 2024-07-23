@@ -74,6 +74,7 @@ class AASP_Woo_Product_Search_Class {
            $this->aasp_load_module('libraries/class.settings-api');
             $this->aasp_load_module('clinc/classes/aasp_settings_api');
             $this->aasp_load_module('clinc/classes/aasp_search');
+            $this->aasp_load_module('clinc/classes/widgets');
         }
 
     protected function aasp_load_module($mod) {

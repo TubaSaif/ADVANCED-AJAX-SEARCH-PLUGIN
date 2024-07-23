@@ -23,8 +23,6 @@ class aasp_Search_Template {
 		$this->option_search_from =  apply_filters('aasp_search_form', wp_parse_args(aasp_get_option('aasp_search_form') ) );
 		$this->option_search_results =  apply_filters('aasp_search_results', wp_parse_args(aasp_get_option('aasp_search_results') ) );
 		
-		
-		
 		add_action( 'aasp_search_bar_preview', array( $this, 'aasp_search_style_common' ) );
 		add_shortcode( 'aasp_search_bar_preview', array( $this, 'aasp_search_shortcode' ) );
 		
