@@ -43,6 +43,7 @@ class AASP_Woo_Product_Search_Class {
     public function __construct() {
             $this->aasp_load_defines();
             $this->aasp_load_scripts();
+            $this->aasp_load_textdomain();
             $this->aasp_load_functions();
             $this->aasp_load_classes();
             $this->option_search_from 		= wp_parse_args(aasp_get_option('aasp_search_form') );
@@ -169,21 +170,40 @@ class AASP_Woo_Product_Search_Class {
             if( ! defined( $name ) ) define( $name, $value );
         }
     
-    private function aasp_get_localize_script(){
+    public function apsw_load_textdomain( $locale = null ) {
+            global $l10n;
     
-            return apply_filters( 'aasp_localize_filters_', array(
-                'ajaxurl' => admin_url( 'admin-ajax.php'),
-                'view_text'	=> esc_html( $this->option_search_results['view_all_text'] ),
-                'text' => array(
-                    'working' => esc_html__('Working...', 'aasp-lang'),
-                ),
-            ) );
-            
-            
-        }
-   
-    }
-
+            $domain = 'apsw-lang';
+    
+            if ( ( is_admin() ? get_user_locale() : get_locale() ) === $locale ) {
+                $locale = null;
+            }
+    
+            if ( empty( $locale ) ) {
+                if ( is_textdomain_loaded( $domain ) ) {
+                    return true;
+                } else {
+                    return load_plugin_textdomain( $domain, false, $domain . '/languages' );
+                }
+            } else {
+                $mo_orig = $l10n[$domain];
+                unapsw_load_textdomain( $domain );
+        
+                $mofile = $domain . '-' . $locale . '.mo';
+                $path = WP_PLUGIN_DIR . '/' . $domain . '/languages';
+        
+                if ( $loaded = apsw_load_textdomain( $domain, $path . '/'. $mofile ) ) {
+                    return $loaded;
+                } else {
+                    $mofile = WP_LANG_DIR . '/plugins/' . $mofile;
+                    return apsw_load_textdomain( $domain, $mofile );
+                }
+        
+                $l10n[$domain] = $mo_orig;
+            }
+    
+            return false;
+    }   	
 }
 
 
