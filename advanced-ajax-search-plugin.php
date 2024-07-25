@@ -170,45 +170,13 @@ class AASP_Woo_Product_Search_Class {
             if( ! defined( $name ) ) define( $name, $value );
         }
     
-    public function apsw_load_textdomain( $locale = null ) {
-            global $l10n;
-    
-            $domain = 'apsw-lang';
-    
-            if ( ( is_admin() ? get_user_locale() : get_locale() ) === $locale ) {
-                $locale = null;
-            }
-    
-            if ( empty( $locale ) ) {
-                if ( is_textdomain_loaded( $domain ) ) {
-                    return true;
-                } else {
-                    return load_plugin_textdomain( $domain, false, $domain . '/languages' );
-                }
-            } else {
-                $mo_orig = $l10n[$domain];
-                unapsw_load_textdomain( $domain );
-        
-                $mofile = $domain . '-' . $locale . '.mo';
-                $path = WP_PLUGIN_DIR . '/' . $domain . '/languages';
-        
-                if ( $loaded = apsw_load_textdomain( $domain, $path . '/'. $mofile ) ) {
-                    return $loaded;
-                } else {
-                    $mofile = WP_LANG_DIR . '/plugins/' . $mofile;
-                    return apsw_load_textdomain( $domain, $mofile );
-                }
-        
-                $l10n[$domain] = $mo_orig;
-            }
-    
-            return false;
-    }   	
+    public function aasp_load_textdomain() {
+            load_plugin_textdomain( 'aasp-in', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+    }
 }
 
-
-
-    global $aasp_product_search_final_class;
+}
+global $aasp_product_search_final_class;
 if (!$aasp_product_search_final_class) {
     $aasp_product_search_final_class = AASP_Woo_Product_Search_Class::getInstance();
 }
