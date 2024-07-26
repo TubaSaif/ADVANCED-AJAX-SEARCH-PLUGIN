@@ -1,8 +1,7 @@
 <?php
 /**
  * WEDEV settings API demo class - 
- *
- * @Author        Tuba
+
  */
 
 if (!defined('ABSPATH')) {
