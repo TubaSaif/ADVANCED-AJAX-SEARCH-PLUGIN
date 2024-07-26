@@ -2,8 +2,6 @@
 /**
  * Search Template Class - 
  *
- * @Author        aThemeArt
- * @Copyright:    2019 aThemeArt
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
