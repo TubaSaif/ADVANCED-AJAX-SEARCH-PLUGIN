@@ -8,13 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }  // if direct access
 
-
-
 class aasp_Search_Template {
 	
 	public $option_search_from;
 	public $option_search_results;
-	
 	
 	public function __construct() {
 		

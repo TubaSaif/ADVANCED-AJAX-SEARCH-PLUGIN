@@ -257,14 +257,14 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 		
 		/*Global Layout*/
 		$defaults['aasp_search_form']  =  array(
-				'search_value'			=> esc_html__( 'Search here...', 'apsw-lang' ),
-				'search_btn' 			=> esc_html__( 'Search ', 'apsw-lang' ),
+				'search_value'			=> esc_html__( 'Search here...', 'aasp-lang' ),
+				'search_btn' 			=> esc_html__( 'Search ', 'aasp-lang' ),
 				'search_bar_width'		=> 999,
 				'search_bar_height'		=> 56,
 				'action_charaters'		=> 1,
 				'show_loader'			=> 'yes',
 				'search_action' 		=> 'both',
-				'search_form_style'		=> 'apsw_search_form_style_1',
+				'search_form_style'		=> 'aasp_search_form_style_1',
 				
 				
 		);
@@ -273,9 +273,9 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 				'content_source' 		=> 'content',
 				'length' 				=> 120,
 				'number_of_product' 	=> 3,
-				'nothing_found' 		=> esc_html__( 'No products were found !', 'apsw-lang' ),
-				'nothing_found_cat' 	=> esc_html__( 'No products were found matching your selection category !', 'apsw-lang' ),
-				'view_all_text' 		=> esc_html__( 'View All', 'apsw-lang' ),
+				'nothing_found' 		=> esc_html__( 'No products were found !', 'aasp-lang' ),
+				'nothing_found_cat' 	=> esc_html__( 'No products were found matching your selection category !', 'aasp-lang' ),
+				'view_all_text' 		=> esc_html__( 'View All', 'aasp-lang' ),
 				'show_image'			=> 'yes',
 				'show_description'		=> 'yes',
 				'show_price'			=> 'yes',

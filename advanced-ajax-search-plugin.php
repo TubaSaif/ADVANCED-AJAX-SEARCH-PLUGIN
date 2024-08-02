@@ -14,7 +14,7 @@ if (!class_exists('AASP_Woo_Product_Search_Class')) {
 
 class AASP_Woo_Product_Search_Class {
         
-         /**
+     /**
 	 * The option_search_results
 	 *
 	 */
