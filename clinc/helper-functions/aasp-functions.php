@@ -257,14 +257,14 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 		
 		/*Global Layout*/
 		$defaults['aasp_search_form']  =  array(
-				'search_value'			=> esc_html__( 'Search here...', 'aasp-lang' ),
-				'search_btn' 			=> esc_html__( 'Search ', 'aasp-lang' ),
-				'search_bar_width'		=> 999,
-				'search_bar_height'		=> 56,
-				'action_charaters'		=> 1,
-				'show_loader'			=> 'yes',
-				'search_action' 		=> 'both',
-				'search_form_style'		=> 'aasp_search_form_style_1',
+				'search_placeholder'	=> esc_html__( 'Search here...', 'aasp-lang' ),
+				'btn_placeholder' 		=> esc_html__( 'Search ', 'aasp-lang' ),
+				'search_form_style'		=> 999,
+				'search_bar_width'		=> 56,
+				'search_bar_height'		=> 1,
+				'action_charaters'		=> 'yes',
+				'show_loader' 		=> 'both',
+				'search_action'		=> 'aasp_search_form_style_1',
 				
 				
 		);
