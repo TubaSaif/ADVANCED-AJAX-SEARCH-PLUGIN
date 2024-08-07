@@ -134,12 +134,12 @@ jQuery( document ).ready( function($) {
    });
    
    
-   /*jQuery(document).on('click','body',function(e){
+   jQuery(document).on('click','body',function(e){
        e.stopPropagation();
        
        alert('test');
        
-   });*/
+   });
    
    $(document).mouseup(function(e) 
    {

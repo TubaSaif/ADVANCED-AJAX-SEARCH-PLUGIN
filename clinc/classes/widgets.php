@@ -6,7 +6,7 @@ class AASPSEARCH extends WP_Widget {
         parent::__construct(
             // Base ID of widget
             'aasp-widgets-wrap', 
-
+            
             // Widget name will appear in UI
             esc_html__('Advanced Product Search', 'aasp-in'),
 

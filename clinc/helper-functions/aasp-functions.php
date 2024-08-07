@@ -1,15 +1,16 @@
 <?php
 /**
- * AASP Common functions - 
+ * ASPW Common function - 
  *
- * @Author        Tuba Saif
+ * @Author        aThemeArt
+ * @Copyright:    2019 aThemeArt
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }  // if direct access
 
-function aasp_alowed_tags() {
+function aspw_alowed_tags() {
 	
 	$wp_post_allow_tag = wp_kses_allowed_html( 'post' );
 	
@@ -193,7 +194,7 @@ function aasp_alowed_tags() {
 	
 	$tags = array_merge($wp_post_allow_tag, $allowed_tags);
 
-	return apply_filters( 'aasp_alowed_tags', $tags );
+	return apply_filters( 'aspw_alowed_tags', $tags );
 	
 }
 
@@ -208,7 +209,7 @@ if ( ! function_exists( 'aasp_get_option' ) ) :
 	 * @param string $key Option key.
 	 * @return mixed Option value.
 	 */
-	function aasp_get_option($key) {
+	function aasp_get_option( $key ) {
 
 		if ( empty( $key ) ) {
 			return;
@@ -257,14 +258,14 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 		
 		/*Global Layout*/
 		$defaults['aasp_search_form']  =  array(
-				'search_placeholder'	=> esc_html__( 'Search here...', 'aasp-lang' ),
-				'btn_placeholder' 		=> esc_html__( 'Search ', 'aasp-lang' ),
-				'search_form_style'		=> 999,
-				'search_bar_width'		=> 56,
-				'search_bar_height'		=> 1,
-				'action_charaters'		=> 'yes',
-				'show_loader' 		=> 'both',
-				'search_action'		=> 'aasp_search_form_style_1',
+				'search_value'			=> esc_html__( 'Search here...', 'aasp-lang' ),
+				'search_btn' 			=> esc_html__( 'Search ', 'aasp-lang' ),
+				'search_bar_width'		=> 999,
+				'search_bar_height'		=> 56,
+				'action_charaters'		=> 1,
+				'show_loader'			=> 'yes',
+				'search_action' 		=> 'both',
+				'search_form_style'		=> 'aasp_search_form_style_1',
 				
 				
 		);
@@ -289,7 +290,7 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 				
 		);
 		
-		$defaults['aasp_color']  =  array(
+		$defaults['aasp_color_scheme']  =  array(
 		
 				'search_bar_bg' 		=> '#fff',
 				'search_bar_border' 	=> '#e2e1e6',

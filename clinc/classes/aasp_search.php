@@ -326,8 +326,8 @@ class aasp_Search_Template {
 	 * @return html input type = search ,submit button ,post_type = product
      */
 	public function aasp_search_element( $button = '' ) {
-		
-	 	$html = '<input type="search" name="s" class="aasp-search-input" value="'.esc_attr( get_search_query() ).'" placeholder="'.esc_attr( $this->option_search_from['search_value']  ).'" data-charaters="'.esc_attr( $this->option_search_from['action_charaters']  ).'" data-functiontype="'.esc_attr( $this->option_search_from['search_action']  ).'" />';
+		error_log('THIS IS search class');
+	 	$html = '<input type="search" name="s" class="aasp-search-input" value="'.esc_attr( get_search_query() ).'" placeholder="'.esc_attr( $this->option_search_from['search_placeholder']  ).'" data-charaters="'.esc_attr( $this->option_search_from['action_charaters']  ).'" data-functiontype="'.esc_attr( $this->option_search_from['search_action']  ).'" />';
           
          $html .= '<button class="aasp-search-btn" type="submit">'. $button .'</button>';
           

@@ -97,6 +97,7 @@ class WeDevs_Settings_API {
      * registers them to WordPress and ready for use.
      */
     function admin_init() {
+        error_log('WOWWWWWWWWW');
         //register settings sections
         foreach ( $this->settings_sections as $section ) {
             if ( false == get_option( $section['id'] ) ) {
@@ -161,7 +162,7 @@ class WeDevs_Settings_API {
      */
     public function get_field_description( $args ) {
         if ( ! empty( $args['desc'] ) ) {
-            $desc = sprintf( '<p class="description">%s</p>', $args['desc'] );
+            $desc = sprintf( '<p class="description">%s</p>', esc_html( $args['desc'] ) );
         } else {
             $desc = '';
         }
@@ -184,7 +185,7 @@ class WeDevs_Settings_API {
         $html        = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder );
         $html       .= $this->get_field_description( $args );
 
-        echo $html;
+        echo wp_kses( $html,  aspw_alowed_tags() );
     }
 
     /**
@@ -213,6 +214,26 @@ class WeDevs_Settings_API {
         $html        = sprintf( '<input type="%1$s" class="%2$s-number" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step );
         $html       .= $this->get_field_description( $args );
 
+        echo wp_kses( $html,  aspw_alowed_tags() );
+    }
+	
+	/**
+     * Displays a number field for a settings field
+     *
+     * @param array   $args settings field args
+     */
+    function callback_numberdisable( $args ) {
+        $value       = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+        $size        = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
+        $type        = isset( $args['type'] ) ? $args['type'] : 'number';
+        $placeholder = empty( $args['placeholder'] ) ? '' : ' placeholder="' . $args['placeholder'] . '"';
+        $min         = ( $args['min'] == '' ) ? '' : ' min="' . $args['min'] . '"';
+        $max         = ( $args['max'] == '' ) ? '' : ' max="' . $args['max'] . '"';
+        $step        = ( $args['step'] == '' ) ? '' : ' step="' . $args['step'] . '"';
+
+        $html        = sprintf( '<input disabled="disabled" type="%1$s" class="%2$s-number" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step );
+        $html       .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" style="color:#F00" target="_blank">Upgrade pro To unlock</a>';
+
         echo $html;
     }
 
@@ -232,8 +253,9 @@ class WeDevs_Settings_API {
         $html  .= sprintf( '%1$s</label>', $args['desc'] );
         $html  .= '</fieldset>';
 
-        echo $html;
+        echo wp_kses( $html,  aspw_alowed_tags() );
     }
+	
 
     /**
      * Displays a multicheckbox for a settings field
@@ -255,7 +277,7 @@ class WeDevs_Settings_API {
         $html .= $this->get_field_description( $args );
         $html .= '</fieldset>';
 
-        echo $html;
+         echo wp_kses( $html,  aspw_alowed_tags() );
     }
 
     /**
@@ -270,14 +292,40 @@ class WeDevs_Settings_API {
 
         foreach ( $args['options'] as $key => $label ) {
             $html .= sprintf( '<label for="wpuf-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
-            $html .= sprintf( '<input type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+            $html .= sprintf( '<input disabled="disabled" readonly="readonly" disabled="disabled" type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
             $html .= sprintf( '%1$s</label><br>', $label );
         }
 
-        $html .= $this->get_field_description( $args );
+        $html .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" style="color:#F00">Upgrade pro To unlock</a>';
         $html .= '</fieldset>';
 
-        echo $html;
+       echo $html;
+    }
+	
+	/**
+     * Displays a radio button for a settings field
+     *
+     * @param array   $args settings field args
+     */
+    function callback_radio_img( $args ) {
+
+        $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
+	
+        $html  = '<fieldset>';
+		$i = 0;
+        foreach ( $args['options'] as $key => $label ) { $i++;
+				$active = ( $value == $key ) ? 'active' : '';
+			
+            $html .= sprintf( '<div class="apsw_radio_box"><label for="wpuf-%1$s[%2$s][%3$s]" class="%4$s">',  $args['section'], $args['id'], $key,$active );
+            $html .= sprintf( '<input type="radio" disabled="disabled" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+            $html .= sprintf( '<img src="%1$s" /></label></div><br>', $label );
+			
+        }
+
+        $html .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" style="color:#F00">Upgrade pro To unlock</a>';
+        $html .= '</fieldset>';
+
+        echo  $html;
     }
 
     /**
@@ -298,7 +346,7 @@ class WeDevs_Settings_API {
         $html .= sprintf( '</select>' );
         $html .= $this->get_field_description( $args );
 
-        echo $html;
+         echo wp_kses( $html,  aspw_alowed_tags() );
     }
 
     /**
@@ -315,7 +363,7 @@ class WeDevs_Settings_API {
         $html        = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]"%4$s>%5$s</textarea>', $size, $args['section'], $args['id'], $placeholder, $value );
         $html        .= $this->get_field_description( $args );
 
-        echo $html;
+         echo wp_kses( $html,  aspw_alowed_tags() );
     }
 
     /**
@@ -325,72 +373,12 @@ class WeDevs_Settings_API {
      * @return string
      */
     function callback_html( $args ) {
-        echo $this->get_field_description( $args );
+       echo wp_kses( $this->get_field_description( $args ),  aspw_alowed_tags() );
     }
 
-    /**
-     * Displays a rich text textarea for a settings field
-     *
-     * @param array   $args settings field args
-     */
-    function callback_wysiwyg( $args ) {
+   
 
-        $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
-        $size  = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : '500px';
-
-        echo '<div style="max-width: ' . $size . ';">';
-
-        $editor_settings = array(
-            'teeny'         => true,
-            'textarea_name' => $args['section'] . '[' . $args['id'] . ']',
-            'textarea_rows' => 10
-        );
-
-        if ( isset( $args['options'] ) && is_array( $args['options'] ) ) {
-            $editor_settings = array_merge( $editor_settings, $args['options'] );
-        }
-
-        wp_editor( $value, $args['section'] . '-' . $args['id'], $editor_settings );
-
-        echo '</div>';
-
-        echo $this->get_field_description( $args );
-    }
-
-    /**
-     * Displays a file upload field for a settings field
-     *
-     * @param array   $args settings field args
-     */
-    function callback_file( $args ) {
-
-        $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
-        $size  = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
-        $id    = $args['section']  . '[' . $args['id'] . ']';
-        $label = isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : __( 'Choose File' );
-
-        $html  = sprintf( '<input type="text" class="%1$s-text wpsa-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
-        $html  .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
-        $html  .= $this->get_field_description( $args );
-
-        echo $html;
-    }
-
-    /**
-     * Displays a password field for a settings field
-     *
-     * @param array   $args settings field args
-     */
-    function callback_password( $args ) {
-
-        $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
-        $size  = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
-
-        $html  = sprintf( '<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
-        $html  .= $this->get_field_description( $args );
-
-        echo $html;
-    }
+ 
 
     /**
      * Displays a color picker field for a settings field
@@ -402,29 +390,27 @@ class WeDevs_Settings_API {
         $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
         $size  = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-        $html  = sprintf( '<input type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />', $size, $args['section'], $args['id'], $value, $args['std'] );
-        $html  .= $this->get_field_description( $args );
-
+        $html  = sprintf( '<input readonly="readonly" type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />', esc_attr( $size ), esc_attr( $args['section'] ), esc_attr($args['id']), esc_attr($value), esc_attr($args['std']) );
+        $html  .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" style="color:#F00">Upgrade pro To unlock</a>';
+		
         echo $html;
     }
-
-
-    /**
-     * Displays a select box for creating the pages select box
+	
+	
+	 /**
+     * Displays a color picker field for a settings field
      *
      * @param array   $args settings field args
      */
-    function callback_pages( $args ) {
+    function callback_divider( $args ) {
 
-        $dropdown_args = array(
-            'selected' => esc_attr($this->get_option($args['id'], $args['section'], $args['std'] ) ),
-            'name'     => $args['section'] . '[' . $args['id'] . ']',
-            'id'       => $args['section'] . '[' . $args['id'] . ']',
-            'echo'     => 0
-        );
-        $html = wp_dropdown_pages( $dropdown_args );
-        echo $html;
+        $html = $this->get_field_description( $args );
+
+       echo wp_kses( $html,  aspw_alowed_tags() );
     }
+
+
+  
 
     /**
      * Sanitize callback for Settings API
@@ -512,12 +498,13 @@ class WeDevs_Settings_API {
         }
 
         foreach ( $this->settings_sections as $tab ) {
-            $html .= sprintf( '<a href="#%1$s" class="nav-tab" id="%1$s-tab">%2$s</a>', $tab['id'], $tab['title'] );
+            $html .= sprintf( '<a href="#%1$s" class="nav-tab" id="%1$s-tab">%2$s</a>', esc_attr( $tab['id'] ), esc_html( $tab['title'] ) );
         }
 
+ 			$html .= '<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" class="nav-tab go-pro" id="go_pro-tab">GO PRO</a>';
+			
         $html .= '</h2>';
-
-        echo $html;
+		echo $html;
     }
 
     /**
@@ -529,16 +516,16 @@ class WeDevs_Settings_API {
         ?>
         <div class="metabox-holder">
             <?php foreach ( $this->settings_sections as $form ) { ?>
-                <div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
+                <div id="<?php echo esc_attr( $form['id'] ); ?>" class="group" style="display: none;">
                     <form method="post" action="options.php">
                         <?php
-                        do_action( 'wsa_form_top_' . $form['id'], $form );
-                        settings_fields( $form['id'] );
-                        do_settings_sections( $form['id'] );
-                        do_action( 'wsa_form_bottom_' . $form['id'], $form );
-                        if ( isset( $this->settings_fields[ $form['id'] ] ) ):
+                        do_action( 'wsa_form_top_' . esc_attr( $form['id'] ), $form );
+                        settings_fields( esc_attr( $form['id'] ) );
+                        do_settings_sections( esc_attr( $form['id'] ) );
+                        do_action( 'wsa_form_bottom_' . esc_attr( $form['id'] ), $form );
+                        if ( isset( $this->settings_fields[ esc_attr( $form['id'] ) ] ) ):
                         ?>
-                        <div style="padding-left: 10px">
+                        <div class="apsw-btn-wrap">
                             <?php submit_button(); ?>
                         </div>
                         <?php endif; ?>
@@ -636,22 +623,10 @@ class WeDevs_Settings_API {
         });
         </script>
         <?php
-        $this->_style_fix();
+       
     }
 
-    function _style_fix() {
-        global $wp_version;
-
-        if (version_compare($wp_version, '3.8', '<=')):
-        ?>
-        <style type="text/css">
-            /** WordPress 3.8 Fix **/
-            .form-table th { padding: 20px 10px; }
-            #wpbody-content .metabox-holder { padding-top: 5px; }
-        </style>
-        <?php
-        endif;
-    }
+    
 
 }
 

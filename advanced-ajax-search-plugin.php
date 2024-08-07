@@ -48,7 +48,7 @@ class AASP_Woo_Product_Search_Class {
             $this->aasp_load_classes();
             $this->option_search_from 		= wp_parse_args(aasp_get_option('aasp_search_form') );
             $this->option_search_results 	= wp_parse_args(aasp_get_option('aasp_search_results') );
-            $this->option_color 			= wp_parse_args(aasp_get_option('aasp_color') );
+            $this->option_color 			= wp_parse_args(aasp_get_option('aasp_color_scheme') );
         }
 
         /**
@@ -72,7 +72,7 @@ class AASP_Woo_Product_Search_Class {
       }
 
     public function aasp_load_classes() {
-           $this->aasp_load_module('libraries/class.settings-api');
+            $this->aasp_load_module('libraries/class.settings-api');
             $this->aasp_load_module('clinc/classes/aasp_settings_api');
             $this->aasp_load_module('clinc/classes/aasp_search');
             $this->aasp_load_module('clinc/classes/widgets');
@@ -146,12 +146,12 @@ class AASP_Woo_Product_Search_Class {
     
             wp_enqueue_script('jquery');
             wp_enqueue_script('aasp-plugins-scripts', plugins_url( 'assets/ajaxfront/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
-            wp_localize_script('aasp-plugins-scripts', 'aasp_localize', $this->aasp_get_localize_script() );
+           wp_localize_script('aasp-plugins-scripts', 'aasp_localize', $this->aasp_get_localize_script() );
         }
     
     function aasp_load_scripts() {
     
-            
+        error_log('THIS IS main file');
             add_action( 'admin_enqueue_scripts', array( $this, 'aasp_admin_scripts' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'aasp_front_scripts' ) );
         }
@@ -170,6 +170,19 @@ class AASP_Woo_Product_Search_Class {
             if( ! defined( $name ) ) define( $name, $value );
         }
     
+    private function aasp_get_localize_script(){
+
+            return apply_filters( 'apsw_localize_filters_', array(
+                'ajaxurl' => admin_url( 'admin-ajax.php'),
+                'view_text'	=> esc_html( $this->option_search_results['view_all_text'] ),
+                'text' => array(
+                    'working' => esc_html__('Working...', 'apsw-lang'),
+                ),
+            ) );
+            
+            
+    }
+
     public function aasp_load_textdomain() {
             load_plugin_textdomain( 'aasp-in', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
     }
