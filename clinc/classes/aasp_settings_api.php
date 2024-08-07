@@ -1,8 +1,6 @@
 <?php
 /**
- * WordPress settings API demo class - 
- *
- * @Author        aThemeArt
+ * WordPress WeDev settings API demo class - 
  * @Copyright:    2019 aThemeArt
  */
 
@@ -40,15 +38,15 @@ class aasp_Settings_API {
         $sections = array(
             array(
                 'id'    => 'aasp_search_form',
-                'title' => esc_html__( 'Search Form', 'aasp-lang' )
+                'title' => esc_html__( 'Search Form', 'aasp-in' )
             ),
             array(
                 'id'    => 'aasp_search_results',
-                'title' => esc_html__( 'Search Results', 'aasp-lang' )
+                'title' => esc_html__( 'Search Results', 'aasp-in' )
             ),
 			array(
                 'id'    => 'aasp_color_scheme',
-                'title' => esc_html__( 'Styling Options', 'aasp-lang' )
+                'title' => esc_html__( 'Styling Options', 'aasp-in' )
             ),
 			
         );
@@ -71,19 +69,19 @@ class aasp_Settings_API {
             'aasp_search_form' => array(
 			
                 array(
-                    'name'              => 'search_value',
-                    'label'             => esc_attr__( 'Text for search field', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Text for search field placeholder.', 'aasp-lang' ),
-                    'placeholder'       => esc_attr( $form['search_value'] ),
+                    'name'              => 'search_placeholder',
+                    'label'             => esc_attr__( 'Text for search field', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Text for search field placeholder.', 'aasp-in' ),
+                    'placeholder'       => esc_attr( $form['search_placeholder'] ),
                     'type'              => 'text',
-                    'default'           => esc_attr( $form['search_value'] ),
+                    'default'           => esc_attr( $form['search_placeholder'] ),
                     
                 ),
 				
 				array(
                     'name'              => 'search_btn',
-                    'label'             => esc_attr__( 'Text for search button', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Text for search button text.', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Text for search button', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Text for search button text.', 'aasp-in' ),
                     'placeholder'       => esc_attr( $form['search_btn'] ),
                     'type'              => 'text',
                     'default'           => esc_attr( $form['search_btn'] ),
@@ -92,8 +90,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'              => 'search_bar_width',
-                    'label'             => esc_attr__( 'Search bar width', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'maximum width of search bar.', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Search bar width', 'aasp-in' ),
+                    'desc'              => esc_html__( 'maximum width of search bar.', 'aasp-in' ),
                     'placeholder'       => esc_attr( $form['search_bar_width'] ),
                     'min'               => 1,
                     'step'              => '1',
@@ -104,8 +102,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'              => 'search_bar_height',
-                    'label'             => esc_attr__( 'Search bar height', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'maximum height of search bar.', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Search bar height', 'aasp-in' ),
+                    'desc'              => esc_html__( 'maximum height of search bar.', 'aasp-in' ),
                     'placeholder'       => esc_attr( $form['search_bar_height'] ),
 					'default'           => esc_attr( $form['search_bar_height'] ),
                     'min'               => 20,
@@ -116,8 +114,8 @@ class aasp_Settings_API {
 				
                 array(
                     'name'              => 'action_charaters',
-                    'label'             => esc_attr__( 'Minimum number of characters', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Minimum number of characters required to run ajax search.', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Minimum number of characters', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Minimum number of characters required to run ajax search.', 'aasp-in' ),
                     'placeholder'       => esc_attr( $form['action_charaters'] ),
 					'default'           => esc_attr( $form['action_charaters'] ),
                     'min'               => 1,
@@ -128,8 +126,8 @@ class aasp_Settings_API {
 				
 				 array(
                     'name'    => 'show_loader',
-                    'label'   => esc_attr__( 'Show loader', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show loader animation while searching. ', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Show loader', 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show loader animation while searching. ', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -141,13 +139,13 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'search_action',
-                    'label'   => esc_attr__( "Search Actions", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Search Actions", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
-                        'both' 		=> esc_html__( "Both ajax search results and search results page", 'aasp-lang' ),
-                        'ajax'  	=> esc_html__( "Only ajax search results ( no search results page )", 'aasp-lang' ),
-						'simple'  	=> esc_html__( "Only search results page ( no ajax search results )", 'aasp-lang' ),
+                        'both' 		=> esc_html__( "Both ajax search results and search results page", 'aasp-in' ),
+                        'ajax'  	=> esc_html__( "Only ajax search results ( no search results page )", 'aasp-in' ),
+						'simple'  	=> esc_html__( "Only search results page ( no ajax search results )", 'aasp-in' ),
                     ),
 					'default'       => esc_attr( $form['search_action'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -155,16 +153,16 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'search_form_style',
-                    'label'   => esc_attr__( "Search Bar Style", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-lang' ),
-                    'type'    => 'radio_img',
+                    'label'   => esc_attr__( "Search Bar Style", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-in' ),
+                    'type'    => 'select',
                     'options' => array(
-                        'aasp_search_form_style_1' 	=> esc_url( aasp_PLUGIN_URL ).'/assets/images/search_form_style_1.png',
-                        'aasp_search_form_style_2' 	=> esc_url( aasp_PLUGIN_URL ).'/assets/images/search_form_style_2.png',
-						'aasp_search_form_style_3' 	=> esc_url( aasp_PLUGIN_URL ).'/assets/images/search_form_style_3.png',
-						'aasp_search_form_style_4' 	=> esc_url( aasp_PLUGIN_URL ).'/assets/images/search_form_style_4.png',
-						'aasp_search_form_style_5' 	=> esc_url( aasp_PLUGIN_URL ).'/assets/images/search_form_style_4.png',
-						'aasp_search_form_style_6' 	=> esc_url( aasp_PLUGIN_URL ).'/assets/images/search_form_style_6.png',
+                        'aasp_search_form_style_1' 	=> '1',
+                        'aasp_search_form_style_2' 	=> '2',
+						'aasp_search_form_style_3' 	=> '3',
+						'aasp_search_form_style_4' 	=> '4',
+						'aasp_search_form_style_5' 	=> '5',
+						'aasp_search_form_style_6' 	=> '6',
 						
                     ),
 					'default'       => esc_attr( $form['search_form_style'] ),
@@ -174,8 +172,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'how_to_use',
-                    'label'   => esc_attr__( "HOW TO USE Search Bar", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'You can use as widgets, you will find inside widgets areas or you can use the shortcode [aasp_search_bar_preview]', 'aasp-lang' ),
+                    'label'   => esc_attr__( "HOW TO USE Search Bar", 'aasp-in' ),
+                    'desc'    => esc_html__( 'You can use as widgets, you will find inside widgets areas or you can use the shortcode [aasp_search_bar_preview]', 'aasp-in' ),
                     'type'    => 'html',
                    
                 ),
@@ -186,8 +184,8 @@ class aasp_Settings_API {
             'aasp_search_results' => array(
 							 array(
                     'name'    => 'content_source',
-                    'label'   => esc_attr__( "Description source", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'From where to take product description.If first source is empty data will be taken from other sources. ', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Description source", 'aasp-in' ),
+                    'desc'    => esc_html__( 'From where to take product description.If first source is empty data will be taken from other sources. ', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'content' => 'Content',
@@ -198,8 +196,8 @@ class aasp_Settings_API {
                 ),
 				array(
                     'name'              => 'length',
-                    'label'             => esc_attr__( 'Content length', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Maximal allowed number of words for product description.', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Content length', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Maximal allowed number of words for product description.', 'aasp-in' ),
                    	'default'       => esc_attr( $result['length'] ),
                     'type'              => 'number',
                     'sanitize_callback' => 'floatval'
@@ -207,8 +205,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'              => 'number_of_product',
-                    'label'             => esc_attr__( 'Number of product', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Maximum number of displayed search results. ', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Number of product', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Maximum number of displayed search results. ', 'aasp-in' ),
                      'default'      	=> esc_attr( $result['number_of_product'] ),
                     'type'              => 'numberdisable',
                     'sanitize_callback' => 'floatval'
@@ -216,16 +214,16 @@ class aasp_Settings_API {
 				
 				array(
                     'name'              => 'nothing_found',
-                    'label'             => esc_attr__( 'Nothing found text', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Text when there is no product found search results. .', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Nothing found text', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Text when there is no product found search results. .', 'aasp-in' ),
                     'default'     	 	=> esc_attr( $result['nothing_found'] ),
                     'type'              => 'text',
                     'sanitize_callback' => 'sanitize_text_field'
                 ),
 				array(
                     'name'              => 'nothing_found_cat',
-                    'label'             => esc_attr__( 'Nothing found text with category search', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'Text when there is no product found search results. .', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'Nothing found text with category search', 'aasp-in' ),
+                    'desc'              => esc_html__( 'Text when there is no product found search results. .', 'aasp-in' ),
                     'type'              => 'text',
                     'default'     	 	=> esc_attr( $result['nothing_found_cat'] ),
                     'sanitize_callback' => 'sanitize_text_field'
@@ -233,8 +231,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'              => 'view_all_text',
-                    'label'             => esc_attr__( 'View All Text', 'aasp-lang' ),
-                    'desc'              => esc_html__( 'leave empty to hide the button.', 'aasp-lang' ),
+                    'label'             => esc_attr__( 'View All Text', 'aasp-in' ),
+                    'desc'              => esc_html__( 'leave empty to hide the button.', 'aasp-in' ),
                     'default'     	 	=> esc_attr( $result['nothing_found_cat'] ),
                     'type'              => 'text',
                     
@@ -244,14 +242,14 @@ class aasp_Settings_API {
 				array(
                     'name'              => 'divider',
                     'type'              => 'divider',
-					'desc'              => esc_html__( 'More Settings for search results. ', 'aasp-lang' ),
+					'desc'              => esc_html__( 'More Settings for search results. ', 'aasp-in' ),
                 ),
 				
 				
                array(
                     'name'    => 'show_image',
-                    'label'   => esc_attr__( "Show Product image", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product image for each search result.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show Product image", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product image for each search result.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -263,8 +261,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_description',
-                    'label'   => esc_attr__( "Show Product Description", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product description text. ', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show Product Description", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product description text. ', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -276,8 +274,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_price',
-                    'label'   => esc_attr__( "Show price", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product price for each search result.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show price", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product price for each search result.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -289,8 +287,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_rating',
-                    'label'   => esc_attr__( "Show Rating", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product Rating for each search result.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show Rating", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product Rating for each search result.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -302,8 +300,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_category',
-                    'label'   => esc_attr__( "Show product category", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product category for each search result.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show product category", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product category for each search result.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -315,8 +313,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_sku',
-                    'label'   => esc_attr__( "Show product sku", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product sku for each search result.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show product sku", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product sku for each search result.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -327,8 +325,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'stock_status',
-                    'label'   => esc_attr__( "Show stock status", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product price for stock status products.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show stock status", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product price for stock status products.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -340,8 +338,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_feature',
-                    'label'   => esc_attr__( "Active Feature ", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'will active green color each Feature product.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Active Feature ", 'aasp-in' ),
+                    'desc'    => esc_html__( 'will active green color each Feature product.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -353,8 +351,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'show_on_sale',
-                    'label'   => esc_attr__( "Show On Sale", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show product On Sale status products.', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Show On Sale", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show product On Sale status products.', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'yes' => 'Yes',
@@ -372,7 +370,7 @@ class aasp_Settings_API {
 				array(
                     'name'    => 'search_bar_bg',
                     'label'   => esc_attr__( 'Search Bar background', 'wedevs' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['search_bar_bg'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -380,24 +378,24 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'search_bar_border',
-                    'label'   => esc_attr__( 'Search Bar border', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Search Bar border', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['search_bar_border'] ),
 					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				array(
                     'name'    => 'search_bar_text',
-                    'label'   => esc_attr__( 'Search Bar Text', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Search Bar Text', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['search_bar_text'] ),
 					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				array(
                     'name'    => 'search_btn_bg',
-                    'label'   => esc_attr__( 'Search button background', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Search button background', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['search_btn_bg'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -405,8 +403,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'search_btn_text',
-                    'label'   => esc_attr__( 'Search button color', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Search button color', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['search_btn_text'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -415,13 +413,13 @@ class aasp_Settings_API {
 				array(
                     'name'              => 'divider',
                     'type'              => 'divider',
-					'desc'              => esc_html__( 'Settings for search search results. ', 'aasp-lang' ),
+					'desc'              => esc_html__( 'Settings for search search results. ', 'aasp-in' ),
                 ),
 				
 				array(
                     'name'    => 'results_con_bg',
-                    'label'   => esc_attr__( 'Results Container background', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results Container background', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_con_bg'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -429,8 +427,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'results_con_bor',
-                    'label'   => esc_attr__( 'Results Container border', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results Container border', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_con_bor'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -438,8 +436,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'results_row_hover',
-                    'label'   => esc_attr__( 'Results each row hover background', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results each row hover background', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_row_hover'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -447,24 +445,24 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'results_heading_color',
-                    'label'   => esc_attr__( 'Results Title Color', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results Title Color', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_heading_color'] ),
 					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				array(
                     'name'    => 'price_color',
-                    'label'   => esc_attr__( 'Price Color', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Price Color', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_text_color'] ),
 					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				array(
                     'name'    => 'results_text_color',
-                    'label'   => esc_attr__( 'Results Text Color', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results Text Color', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_text_color'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -472,8 +470,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'category_color',
-                    'label'   => esc_attr__( 'Results Category Color', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results Category Color', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['category_color'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -481,16 +479,16 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'results_stock_color',
-                    'label'   => esc_attr__( 'Results Stock Color', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Results Stock Color', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['results_stock_color'] ),
 					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				array(
                     'name'    => 'on_sale_bg',
-                    'label'   => esc_attr__( 'On Sale background', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'On Sale background', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['on_sale_bg'] ),
 					'sanitize_callback' => 'sanitize_text_field'
@@ -498,8 +496,8 @@ class aasp_Settings_API {
 				
 				array(
                     'name'    => 'featured_product_bg',
-                    'label'   => esc_attr__( 'Featured Product background', 'aasp-lang' ),
-                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-lang' ),
+                    'label'   => esc_attr__( 'Featured Product background', 'aasp-in' ),
+                    'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['featured_product_bg'] ),
 					'sanitize_callback' => 'sanitize_text_field'

@@ -190,7 +190,7 @@ class aasp_Search_Template {
 		
 		echo '<div class="aasp-search-wrap '.esc_attr( $form_style ).'">';
 			
-			echo wp_kses( $this->aasp_search_from_start(), aasp_alowed_tags() );
+			echo wp_kses( $this->aasp_search_from_start(), aspw_alowed_tags() );
 			
 			switch ( $form_style ) {
 				
@@ -216,10 +216,10 @@ class aasp_Search_Template {
 				$this->aasp_search_style_1();
 			}
 			if( !empty($this->aasp_ajax_data()) ){
-			echo wp_kses( $this->aasp_ajax_data(), aasp_alowed_tags() );
+			echo wp_kses( $this->aasp_ajax_data(), aspw_alowed_tags() );
 			}
 			
-			echo wp_kses( $this->aasp_search_from_end(), aasp_alowed_tags() );
+			echo wp_kses( $this->aasp_search_from_end(), aspw_alowed_tags() );
 		echo '</div>';
 	}
 	/**
@@ -227,23 +227,23 @@ class aasp_Search_Template {
      * 
      */
 	public function aasp_search_style_6(){
-		echo wp_kses( $this->aasp_search_element(  esc_attr( $this->option_search_from['search_btn']  ) ),aasp_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element(  esc_attr( $this->option_search_from['search_btn']  ) ),aspw_alowed_tags() );
 	}
 	/**
      * search style 5 
      * 
      */
 	public function aasp_search_style_5(){
-		echo wp_kses( $this->aasp_search_element( esc_attr( $this->option_search_from['search_btn']  ) ) , aasp_alowed_tags() );
-		echo wp_kses( $this->aasp_search_element_category(), aasp_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element( esc_attr( $this->option_search_from['search_btn']  ) ) , aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 	}
 	/**
      * search style4 
      * 
      */
 	public function aasp_search_style_4(){
-		echo wp_kses( $this->aasp_search_element( esc_attr( $this->option_search_from['search_btn']  ) ) , aasp_alowed_tags() );
-		echo wp_kses( $this->aasp_search_element_category(), aasp_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element( esc_attr( $this->option_search_from['search_btn']  ) ) , aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 		
 	}
 	/**
@@ -251,7 +251,7 @@ class aasp_Search_Template {
      * 
      */
 	public function aasp_search_style_3(){
-		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aasp_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aspw_alowed_tags() );
 		
 	}
 	 /**
@@ -260,8 +260,8 @@ class aasp_Search_Template {
      */
 	public function aasp_search_style_1(){
 		
-		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aasp_alowed_tags() );
-		echo wp_kses( $this->aasp_search_element_category(), aasp_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 		
 		
 	}

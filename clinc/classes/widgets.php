@@ -24,17 +24,17 @@ class AASPSEARCH extends WP_Widget {
         // Set widget title
         $widget_title = isset( $instance['title'] ) ? $instance['title'] : '';
 		$style		  = isset( $instance['search_bar_style'] ) ? $instance['search_bar_style'] : '';
-        echo wp_kses( $args['before_widget'] ,aasp_alowed_tags() );
+        echo wp_kses( $args['before_widget'] ,aspw_alowed_tags() );
         // if title is present
         if ( ! empty( $widget_title ) ) {
-			echo wp_kses( $args['before_title'] ,aasp_alowed_tags() );
+			echo wp_kses( $args['before_title'] ,aspw_alowed_tags() );
 			echo  esc_html( $widget_title );
-			echo wp_kses( $args['after_title'] ,aasp_alowed_tags() );
+			echo wp_kses( $args['after_title'] ,aspw_alowed_tags() );
           
         }
         // output
         do_action('aasp_search_bar_preview', absint( $style ) );
-        echo wp_kses( $args['after_widget'] ,aasp_alowed_tags() );      
+        echo wp_kses( $args['after_widget'] ,aspw_alowed_tags() );      
     }
 
     // The form() function - Outputs the options form in the admin

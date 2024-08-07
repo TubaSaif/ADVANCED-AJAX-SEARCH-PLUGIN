@@ -2,8 +2,6 @@
 /**
  * ASPW Common function - 
  *
- * @Author        aThemeArt
- * @Copyright:    2019 aThemeArt
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -258,7 +256,7 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 		
 		/*Global Layout*/
 		$defaults['aasp_search_form']  =  array(
-				'search_value'			=> esc_html__( 'Search here...', 'aasp-lang' ),
+				'search_placeholder'			=> esc_html__( 'Search here...', 'aasp-lang' ),
 				'search_btn' 			=> esc_html__( 'Search ', 'aasp-lang' ),
 				'search_bar_width'		=> 999,
 				'search_bar_height'		=> 56,

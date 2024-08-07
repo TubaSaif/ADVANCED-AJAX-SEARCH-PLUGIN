@@ -232,7 +232,7 @@ class WeDevs_Settings_API {
         $step        = ( $args['step'] == '' ) ? '' : ' step="' . $args['step'] . '"';
 
         $html        = sprintf( '<input disabled="disabled" type="%1$s" class="%2$s-number" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"%6$s%7$s%8$s%9$s/>', $type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step );
-        $html       .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" style="color:#F00" target="_blank">Upgrade pro To unlock</a>';
+      
 
         echo $html;
     }
@@ -296,7 +296,7 @@ class WeDevs_Settings_API {
             $html .= sprintf( '%1$s</label><br>', $label );
         }
 
-        $html .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" style="color:#F00">Upgrade pro To unlock</a>';
+       
         $html .= '</fieldset>';
 
        echo $html;
@@ -322,7 +322,9 @@ class WeDevs_Settings_API {
 			
         }
 
-        $html .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" style="color:#F00">Upgrade pro To unlock</a>';
+       
+    
+
         $html .= '</fieldset>';
 
         echo  $html;
@@ -391,7 +393,7 @@ class WeDevs_Settings_API {
         $size  = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
 
         $html  = sprintf( '<input readonly="readonly" type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />', esc_attr( $size ), esc_attr( $args['section'] ), esc_attr($args['id']), esc_attr($value), esc_attr($args['std']) );
-        $html  .= $this->get_field_description( $args ).'<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" style="color:#F00">Upgrade pro To unlock</a>';
+     
 		
         echo $html;
     }
@@ -500,8 +502,6 @@ class WeDevs_Settings_API {
         foreach ( $this->settings_sections as $tab ) {
             $html .= sprintf( '<a href="#%1$s" class="nav-tab" id="%1$s-tab">%2$s</a>', esc_attr( $tab['id'] ), esc_html( $tab['title'] ) );
         }
-
- 			$html .= '<a href="https://athemeart.com/downloads/advanced-product-search-for-woo/" target="_blank" class="nav-tab go-pro" id="go_pro-tab">GO PRO</a>';
 			
         $html .= '</h2>';
 		echo $html;

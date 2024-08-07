@@ -4,7 +4,7 @@ Plugin Name: Advanced Ajax Search for WooCommerce
 Plugin URI: https://github.com/TubaSaif
 Description: Advanced Ajax Product Search for WooCommerce
 Version: 1.0
-Author: Tuba Saif----------
+Author: Tuba Saif
 Author URI: https://tubasaif.github.io/
 Domain Path: /languages/
 */
