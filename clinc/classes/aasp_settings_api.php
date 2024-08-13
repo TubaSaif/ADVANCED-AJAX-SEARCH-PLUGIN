@@ -1,7 +1,6 @@
 <?php
 /**
  * WordPress WeDev settings API demo class - 
- * @Copyright:    2019 aThemeArt
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -151,22 +150,21 @@ class aasp_Settings_API {
 					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				
-				array(
+                array(
                     'name'    => 'search_form_style',
-                    'label'   => esc_attr__( "Search Bar Style", 'aasp-in' ),
-                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-in' ),
-                    'type'    => 'select',
+                    'label'   => esc_attr__( "Search Bar Style", 'aasp-lang' ),
+                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-lang' ),
+                    'type'    => 'radio',
                     'options' => array(
                         'aasp_search_form_style_1' 	=> '1',
                         'aasp_search_form_style_2' 	=> '2',
 						'aasp_search_form_style_3' 	=> '3',
 						'aasp_search_form_style_4' 	=> '4',
 						'aasp_search_form_style_5' 	=> '5',
-						'aasp_search_form_style_6' 	=> '6',
-						
+						'aasp_search_form_style_6' 	=> '6'
                     ),
 					'default'       => esc_attr( $form['search_form_style'] ),
-					 'sanitize_callback' => 'sanitize_text_field'
+					'sanitize_callback' => 'sanitize_text_field'
                 ),
 				
 				
@@ -208,7 +206,7 @@ class aasp_Settings_API {
                     'label'             => esc_attr__( 'Number of product', 'aasp-in' ),
                     'desc'              => esc_html__( 'Maximum number of displayed search results. ', 'aasp-in' ),
                      'default'      	=> esc_attr( $result['number_of_product'] ),
-                    'type'              => 'numberdisable',
+                    'type'              => 'number',
                     'sanitize_callback' => 'floatval'
                 ),
 				
@@ -366,10 +364,14 @@ class aasp_Settings_API {
 				
             ),
 			'aasp_color_scheme' => array(
-				
+                array(
+                    'name'              => 'divider1',
+                    'type'              => 'divider',
+					'desc'              => esc_html__( 'Settings for search form ', 'aasp-in' ),
+                ),
 				array(
                     'name'    => 'search_bar_bg',
-                    'label'   => esc_attr__( 'Search Bar background', 'wedevs' ),
+                    'label'   => esc_attr__( 'Search Bar background', 'aasp-in' ),
                     'desc'    => esc_html__( 'The plugins comes with unlimited color schemes for your theme\'s styling.', 'aasp-in' ),
                     'type'    => 'color',
                     'default' => esc_attr( $color['search_bar_bg'] ),
@@ -413,7 +415,7 @@ class aasp_Settings_API {
 				array(
                     'name'              => 'divider',
                     'type'              => 'divider',
-					'desc'              => esc_html__( 'Settings for search search results. ', 'aasp-in' ),
+					'desc'              => esc_html__( 'Settings for result dropdown ', 'aasp-in' ),
                 ),
 				
 				array(

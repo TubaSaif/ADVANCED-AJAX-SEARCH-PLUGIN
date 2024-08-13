@@ -256,14 +256,14 @@ if ( ! function_exists( 'aasp_default_theme_options' ) ) :
 		
 		/*Global Layout*/
 		$defaults['aasp_search_form']  =  array(
-				'search_placeholder'			=> esc_html__( 'Search here...', 'aasp-lang' ),
+				'search_placeholder'	=> esc_html__( 'Search here...', 'aasp-lang' ),
 				'search_btn' 			=> esc_html__( 'Search ', 'aasp-lang' ),
 				'search_bar_width'		=> 999,
 				'search_bar_height'		=> 56,
 				'action_charaters'		=> 1,
 				'show_loader'			=> 'yes',
 				'search_action' 		=> 'both',
-				'search_form_style'		=> 'aasp_search_form_style_1',
+				'search_form_style'		=> 'aasp_search_form_style_3',
 				
 				
 		);

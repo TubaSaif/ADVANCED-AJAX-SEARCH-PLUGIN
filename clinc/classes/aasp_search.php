@@ -8,15 +8,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }  // if direct access
 
+
+
 class aasp_Search_Template {
 	
 	public $option_search_from;
 	public $option_search_results;
 	
+	
 	public function __construct() {
 		
-		$this->option_search_from =  apply_filters('aasp_search_form', wp_parse_args(aasp_get_option('aasp_search_form') ) );
-		$this->option_search_results =  apply_filters('aasp_search_results', wp_parse_args(aasp_get_option('aasp_search_results') ) );
+		$this->option_search_from =  apply_filters( 'aasp_search_form', wp_parse_args( aasp_get_option('aasp_search_form') ) );
+		$this->option_search_results =  apply_filters( 'aasp_search_results', wp_parse_args ( aasp_get_option('aasp_search_results') ) );
+		
+		
 		
 		add_action( 'aasp_search_bar_preview', array( $this, 'aasp_search_style_common' ) );
 		add_shortcode( 'aasp_search_bar_preview', array( $this, 'aasp_search_shortcode' ) );
@@ -168,31 +173,40 @@ class aasp_Search_Template {
 	
 	/**
      * Preview the from via shortcode
-     * 
+     * $this->option_search_from['search_form_style']
      */
 	function aasp_search_shortcode($atts) {
+		// Extract shortcode attributes with a default style value of 6
 		extract(shortcode_atts(array(
-			'style' => 4,
+			'style' => '1',
 		), $atts));
-		return $this->aasp_search_style_common( absint( $style ) );
+	
+		// Determine the form style dynamically
+		if( isset( $style ) && !empty( $style ) ){
+			// Apply filter to customize the form style dynamically
+			$style  = esc_html( apply_filters( 'aasp_search_form_style', $this->option_search_from['search_form_style'] ));
+		} else {
+			// Fallback to a default style from your options if not provided
+			$style  = esc_html( apply_filters( 'aasp_search_form_style', 'aasp_search_form_style_'.absint($style) ));
+
+		}
+	
+		// Return the form style or use it in further processing
+		return $this->aasp_search_style_common($style);
 	}
+	
 	/**
      * search form render
      * 
      */
 	public function aasp_search_style_common( $style ){
 		
-		if( isset( $style ) && !empty( $style ) ){
-			$form_style  = esc_html(  apply_filters( 'aasp_search_form_style', 'aasp_search_form_style_'.absint($style) ));
-		}else {
-			$form_style  = esc_html( apply_filters( 'aasp_search_form_style', $this->option_search_from['search_form_style'] ) );
-		}
 		
-		echo '<div class="aasp-search-wrap '.esc_attr( $form_style ).'">';
+		echo '<div class="aasp-search-wrap '.esc_attr( $style ).'">';
 			
 			echo wp_kses( $this->aasp_search_from_start(), aspw_alowed_tags() );
 			
-			switch ( $form_style ) {
+			switch ( $style ) {
 				
 				case "aasp_search_form_style_6":
 					$this->aasp_search_style_6();
@@ -252,6 +266,15 @@ class aasp_Search_Template {
      */
 	public function aasp_search_style_3(){
 		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aspw_alowed_tags() );
+	}
+	 /**
+     * search style 2 
+     * 
+     */
+	public function aasp_search_style_2(){
+		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aspw_alowed_tags() );
+		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
+		
 		
 	}
 	 /**
@@ -259,7 +282,6 @@ class aasp_Search_Template {
      * 
      */
 	public function aasp_search_style_1(){
-		
 		echo wp_kses( $this->aasp_search_element( $this->aasp_svg_icon_btn() ), aspw_alowed_tags() );
 		echo wp_kses( $this->aasp_search_element_category(), aspw_alowed_tags() );
 		
@@ -326,7 +348,7 @@ class aasp_Search_Template {
 	 * @return html input type = search ,submit button ,post_type = product
      */
 	public function aasp_search_element( $button = '' ) {
-		error_log('THIS IS search class');
+		
 	 	$html = '<input type="search" name="s" class="aasp-search-input" value="'.esc_attr( get_search_query() ).'" placeholder="'.esc_attr( $this->option_search_from['search_placeholder']  ).'" data-charaters="'.esc_attr( $this->option_search_from['action_charaters']  ).'" data-functiontype="'.esc_attr( $this->option_search_from['search_action']  ).'" />';
           
          $html .= '<button class="aasp-search-btn" type="submit">'. $button .'</button>';
@@ -335,7 +357,7 @@ class aasp_Search_Template {
 		 
 		 if( apply_filters( 'aasp_show_loader', $this->option_search_from['show_loader'] ) == 'yes' ){
 			 
-		 	$html .='<img class="aasp_loader" src="'.esc_url_raw( aasp_PLUGIN_URL ).'assets/img/loader.gif"/>';
+		 	$html .='<img class="aasp_loader" src="'.esc_url_raw( aasp_PLUGIN_URL ).'assets/images/loader.gif"/>';
 			
 		 }
 		 
@@ -368,7 +390,7 @@ class aasp_Search_Template {
 			
 			$html ='<div class="aasp-select-box-wrap"><select class="aasp-category-items" name="category">
 			
-			<option value="0">'.esc_html__('All Categories','aasp-lang').'</option>';
+			<option value="0">'.esc_html__('All Categories','aasp-in').'</option>';
 			
 			
 		if( is_array( $all_categories ) && count( $all_categories ) > 0 ):

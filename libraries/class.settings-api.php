@@ -97,7 +97,7 @@ class WeDevs_Settings_API {
      * registers them to WordPress and ready for use.
      */
     function admin_init() {
-        error_log('WOWWWWWWWWW');
+        error_log('.........');
         //register settings sections
         foreach ( $this->settings_sections as $section ) {
             if ( false == get_option( $section['id'] ) ) {
@@ -292,10 +292,10 @@ class WeDevs_Settings_API {
 
         foreach ( $args['options'] as $key => $label ) {
             $html .= sprintf( '<label for="wpuf-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
-            $html .= sprintf( '<input disabled="disabled" readonly="readonly" disabled="disabled" type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+            $html .= sprintf( '<input  type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
             $html .= sprintf( '%1$s</label><br>', $label );
         }
-
+//disabled="disabled" readonly="readonly" disabled="disabled"
        
         $html .= '</fieldset>';
 
@@ -316,8 +316,8 @@ class WeDevs_Settings_API {
         foreach ( $args['options'] as $key => $label ) { $i++;
 				$active = ( $value == $key ) ? 'active' : '';
 			
-            $html .= sprintf( '<div class="apsw_radio_box"><label for="wpuf-%1$s[%2$s][%3$s]" class="%4$s">',  $args['section'], $args['id'], $key,$active );
-            $html .= sprintf( '<input type="radio" disabled="disabled" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+            $html .= sprintf( '<div class="aasp_radio_box"><label for="wpuf-%1$s[%2$s][%3$s]" class="%4$s">',  $args['section'], $args['id'], $key,$active );
+            $html .= sprintf( '<input type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
             $html .= sprintf( '<img src="%1$s" /></label></div><br>', $label );
 			
         }
@@ -525,7 +525,7 @@ class WeDevs_Settings_API {
                         do_action( 'wsa_form_bottom_' . esc_attr( $form['id'] ), $form );
                         if ( isset( $this->settings_fields[ esc_attr( $form['id'] ) ] ) ):
                         ?>
-                        <div class="apsw-btn-wrap">
+                        <div class="aasp-btn-wrap">
                             <?php submit_button(); ?>
                         </div>
                         <?php endif; ?>

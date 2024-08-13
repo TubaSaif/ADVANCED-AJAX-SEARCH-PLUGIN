@@ -7,7 +7,7 @@ jQuery( document ).ready( function($) {
            var charaters		 = $el.data('charaters'),
                functiontype 	 = $el.data('functiontype'),
                input_val	 	 = $el.val(),
-               load_result 	 = $el.parents('.aasp-search-wrap').find('.aasp_ajax_result'),
+               load_result 	     = $el.parents('.aasp-search-wrap').find('.aasp_ajax_result'),
                category_val 	 = $el.parents('.aasp-search-wrap').find('.aasp-category-items').val(),
                action_url 		 = $el.parents('.aasp-search-wrap').find('form').attr('action');
                
@@ -23,7 +23,7 @@ jQuery( document ).ready( function($) {
                type : 'post',
                data : {
                    action 		: 'aasp_get_woo_search_result',
-                   keyword 	: input_val,
+                   keyword 	    : input_val,
                    category 	: category_val
                },
                beforeSend : function()    {
@@ -134,13 +134,6 @@ jQuery( document ).ready( function($) {
    });
    
    
-   jQuery(document).on('click','body',function(e){
-       e.stopPropagation();
-       
-       alert('test');
-       
-   });
-   
    $(document).mouseup(function(e) 
    {
        var container = $(".aasp-search-wrap");
@@ -150,11 +143,6 @@ jQuery( document ).ready( function($) {
        {
              container.find('.aasp_ajax_result').html('');
        }
-   });
-       
-   
-
-
-   
+   });  
 });
 
