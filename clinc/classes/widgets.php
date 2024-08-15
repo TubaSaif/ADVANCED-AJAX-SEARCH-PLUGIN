@@ -17,6 +17,8 @@ class AASPSEARCH extends WP_Widget {
                 'customize_selective_refresh' => true,
             )
             );
+                    // Initialize Search Template class
+        //$this->search_template = new aasp_Search_Template();
     }
 
     // The widget() function - Outputs the content of the widget
@@ -29,21 +31,21 @@ class AASPSEARCH extends WP_Widget {
         if ( ! empty( $widget_title ) ) {
 			echo wp_kses( $args['before_title'] ,aspw_alowed_tags() );
 			echo  esc_html( $widget_title );
-			echo wp_kses( $args['after_title'] ,aspw_alowed_tags() );
-          
+			echo wp_kses( $args['after_title'] ,aspw_alowed_tags() ); 
         }
         // output
-        do_action('aasp_search_bar_preview', absint( $style ) );
+        do_action('aasp_search_bar_preview', $style );
+        //echo $this->search_template->aasp_search_shortcode(array('style' => '6'));
         echo wp_kses( $args['after_widget'] ,aspw_alowed_tags() );      
     }
 
     // The form() function - Outputs the options form in the admin
     public function form( $instance ) {
         // Title
-        $title = !empty($instance['title']) ? $instance['title'] : esc_html__( 'Product Search', 'AASPSEARCH_domain' );
+        $title = !empty($instance['title']) ? $instance['title'] : esc_html__( 'Product Search', 'aasp-in' );
     
         // Search Bar Style
-        $search_bar_style = !empty($instance['search_bar_style']) ? $instance['search_bar_style'] : '1';
+        $search_bar_style = !empty($instance['search_bar_style']) ? $instance['search_bar_style'] : '';
     
         ?>
         <p>
@@ -55,19 +57,21 @@ class AASPSEARCH extends WP_Widget {
             <select class="widefat" id="<?php echo $this->get_field_id( 'search_bar_style' ); ?>" name="<?php echo $this->get_field_name( 'search_bar_style' ); ?>">
                 <?php
                 $options = array(
-                    '1' => esc_html__( 'Style 1', 'aasp-in' ),
-                    '2.0' => esc_html__( 'Style 2', 'aasp-in' ),
-                    '3.0' => esc_html__( 'Style 3', 'aasp-in' ),
-                    '4.0' => esc_html__( 'Style 4', 'aasp-in' ),
-                    '5.0' => esc_html__( 'Style 5', 'aasp-in' ),
-                    '6.0' => esc_html__( 'Style 6', 'aasp-in' )
+                    'aasp_search_form_style_1' => esc_html__( 'Style 1', 'aasp-in' ),
+                    'aasp_search_form_style_2' => esc_html__( 'Style 2', 'aasp-in' ),
+                    'aasp_search_form_style_3' => esc_html__( 'Style 3', 'aasp-in' ),
+                    'aasp_search_form_style_4' => esc_html__( 'Style 4', 'aasp-in' ),
+                    'aasp_search_form_style_5' => esc_html__( 'Style 5', 'aasp-in' ),
+                    'aasp_search_form_style_6' => esc_html__( 'Style 6', 'aasp-in' )
                 );
     
                 foreach ($options as $key => $label) {
                     echo '<option value="' . esc_attr( $key ) . '" ' . selected( $search_bar_style, $key, false ) . '>' . esc_html( $label ) . '</option>';
+                    echo $search_bar_style;
                 }
                 ?>
             </select>
+            
         </p>
         <?php
     }
@@ -77,7 +81,7 @@ class AASPSEARCH extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-        $instance['search_bar_style'] = ( ! empty( $new_instance['search_bar_style'] ) ) ? strip_tags( $new_instance['search_bar_style'] ) : '1';
+        $instance['search_bar_style'] = ( ! empty( $new_instance['search_bar_style'] ) ) ? strip_tags( $new_instance['search_bar_style'] ) : '6';
         return $instance;
     }
 }
