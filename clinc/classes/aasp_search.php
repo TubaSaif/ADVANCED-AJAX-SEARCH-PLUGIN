@@ -119,7 +119,7 @@ class aasp_Search_Template {
 						
 						'featured'	=> ( $product->is_on_sale() && $this->option_search_results['show_feature'] == 'yes' ) ? true : '',
 						
-						'on_sale'	=>( $product->is_on_sale() && $this->option_search_results['show_on_sale'] == 'yes' ) ?  esc_html__( 'Sale!', 'aasp-lang' ) : '',
+						'on_sale'	=>( $product->is_on_sale() && $this->option_search_results['show_on_sale'] == 'yes' ) ?  esc_html__( 'Sale!', 'aasp-in' ) : '',
 						'sku'	=>( $this->option_search_results['show_sku'] == 'yes' ) ?  $product->get_sku() : '',	
 					);
 					

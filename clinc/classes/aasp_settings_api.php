@@ -152,8 +152,8 @@ class aasp_Settings_API {
 				
                 array(
                     'name'    => 'search_form_style',
-                    'label'   => esc_attr__( "Search Bar Style", 'aasp-lang' ),
-                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-lang' ),
+                    'label'   => esc_attr__( "Search Bar Style", 'aasp-in' ),
+                    'desc'    => esc_html__( 'Show link to search results page at the bottom of search results block. ', 'aasp-in' ),
                     'type'    => 'radio',
                     'options' => array(
                         'aasp_search_form_style_1' 	=> '1',

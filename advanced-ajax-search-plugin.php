@@ -5,7 +5,7 @@ Plugin URI: https://github.com/TubaSaif
 Description: Advanced Ajax Product Search for WooCommerce
 Version: 1.0
 Author: Tuba Saif
-Author URI: https://tubasaif.github.io/
+Author URI: https://tubasaif.my-board.org/
 Domain Path: /languages/
 */
 
